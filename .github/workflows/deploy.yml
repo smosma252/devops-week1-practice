@@ -15,5 +15,10 @@ jobs:
         username: ubuntu
         key: ${{ secrets.SSH_KEY_SECRET_EC2 }}
         port: 22
-        script: whoami
-        
+        script:
+          cd devops-week1-practice
+          git pull
+          npm install
+          npm run build
+          npm run start
+          
