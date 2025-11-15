@@ -16,3 +16,4 @@ jobs:
         key: ${{ secrets.SSH_KEY_SECRET_EC2 }}
         port: 22
         script: whoami
+        
