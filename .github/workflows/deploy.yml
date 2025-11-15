@@ -1,24 +1,18 @@
 name: Deploy to EC2
-
 on: 
   push: 
     branches: 
       - main
-
-
 jobs:
   deploy:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run deployment commands on EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: 3.21.170.160
-          username: ubuntu
-          password: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: whoami
+    - name: Execute remote SSH commands using SSH key
+      uses: appleboy/ssh-action@v1
+      with:
+        host: 3.21.170.160
+        username: ubuntu
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: whoami
